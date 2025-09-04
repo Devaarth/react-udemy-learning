@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
-export default function NewProject({ onAdd }) {
+export default function NewProject({ onAdd, onCancel }) {
   const title = useRef();
   const desc = useRef();
   const dueDate = useRef();
@@ -24,7 +24,6 @@ export default function NewProject({ onAdd }) {
       dueDate: enteredDueDate,
     });
   }
-  function handleCancel() {}
   return (
     <>
       <Modal ref={modalRef} buttonCaption="Close">
@@ -35,7 +34,7 @@ export default function NewProject({ onAdd }) {
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
             <button
-              onClick={handleCancel}
+              onClick={onCancel}
               className="text-stone-500 hover:text-stone-900 backgrou"
             >
               Cancel

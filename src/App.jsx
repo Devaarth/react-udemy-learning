@@ -16,6 +16,14 @@ function App() {
       };
     });
   }
+  function handleSelectProject(id){
+    setProjectsState((prevState)=>{
+      return{
+        ...prevState,
+        selectedProjectId: id
+      }
+    })
+  }
 
   function handleAddProject(projectData) {
     setProjectsState((prevState) => {
@@ -32,7 +40,12 @@ function App() {
     });
   }
   function handleCancel(){
-    
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: undefined,
+      };
+    });
   }
   let content;
   if (projectsState.selectedProjectId === null) {
@@ -45,6 +58,7 @@ function App() {
       <ProjectsSideBar
         onStartAddProject={handleStartAddProject}
         projects={projectsState.projects}
+        onSelectProject = {handleSelectProject}
       />
       {content}
     </main>
